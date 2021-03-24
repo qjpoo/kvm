@@ -8,10 +8,8 @@ set -e
 # 2. 设置kvm主机的网段头比如: 192.168
 # 3. 第一次要做好xml配置文件template.xml和基础的镜像C7-base.qcow2
 
-# 自动添加虚拟机
-NET_PREFIX='10.10' # 根据自己的网段设置, 前两位比如: 192.168
-NET_POOL=`ip addr |grep -A 3 '\<br0:' |awk -F'.'  '/inet\>/{print $3}'`
-
+# 根据自己的网段设置, 前两位比如: 192.168
+NET_PREFIX='10.10' 
 # 获取当前kvm主机的网卡名: ens33 IP NETMASK HW GATEWAY
 LOCAL_INTERFACE=`ls /etc/sysconfig/network-scripts/ |grep ifcfg-e |head -1  |sed s/ifcfg-//g`
 NETWORK=(
